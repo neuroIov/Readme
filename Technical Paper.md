@@ -1,11 +1,12 @@
-# 1. Abstract
+# Technical Paper
 
-Neurolov implements a novel browser-based distributed computing protocol utilizing WebGPU for direct GPU access, dual-chain architecture (Solana + TON) for efficient compute task distribution, and zero-knowledge proofs for computation verification. Current implementation achieves 85,000 TFLOPS across 170 nodes with 99.99% uptime.
+## 1. Abstract
 
+Neurolov implements a simple browser-based distributed computing protocol utilizing WebGPU for direct GPU access, dual-chain architecture (Solana + TON) for efficient compute task distribution, and zero-knowledge proofs for computation verification. Current implementation achieves 85,000 TFLOPS across 170 nodes with 99.99% uptime.
 
-# 2. System Architecture
+## 2. System Architecture
 
-## 2.1 High-Level Architecture
+### 2.1 High-Level Architecture
 
 ```mermaid
 graph TB
@@ -32,7 +33,7 @@ graph TB
 
 The high-level architecture demonstrates Neurolov's three-tier distributed system. At the top, the Client Layer handles user interactions through WebGPU browsers and Telegram clients. The Blockchain Layer manages core platform operations using Solana for token transactions and TON for messaging/storage. The bottom Compute Layer orchestrates GPU resources and task scheduling, forming the backbone of the processing network.
 
-## 2.2 WebGPU Implementation
+### 2.2 WebGPU Implementation
 
 The WebGPUManager class provides sophisticated GPU resource management. It initializes the GPU device with specific capability requirements like timestamp queries and pipeline statistics. The class handles compute pipeline creation with shader modules and automatic layout determination. The executeComputation method efficiently manages buffer creation, bind group setup, and command encoding for parallel processing.
 
@@ -130,18 +131,18 @@ class WebGPUManager {
 }
 ```
 
-## 2.3 Blockchain Integration
+### 2.3 Blockchain Integration
 
-The Solana smart contract code demonstrates a robust node registration system. The neurolov_node_registry program manages the secure onboarding of GPU nodes, with key features including:
+The Solana smart contract code demonstrates a robust node registration system. The neurolov\_node\_registry program manages the secure onboarding of GPU nodes, with key features including:
 
-- Zero-knowledge proof verification of node capabilities
-- On-chain reputation tracking
-- Stake requirement verification
-- Comprehensive event logging for transparency
+* Zero-knowledge proof verification of node capabilities
+* On-chain reputation tracking
+* Stake requirement verification
+* Comprehensive event logging for transparency
 
 The contract's modular structure ensures secure node management while maintaining efficiency through Solana's high-speed execution.
 
-### Solana Smart Contract for Node Registration
+#### Solana Smart Contract for Node Registration
 
 ```solidity
 #[program]
@@ -189,13 +190,13 @@ pub struct RegisterNode<'info> {
 }
 ```
 
-## 2.4 Network Topology
+### 2.4 Network Topology
 
 The platform poses a three-tier network architecture:
 
-- Edge Layer: Contains individual compute nodes (E1, E2, E3) providing direct GPU resources
-- Distribution Layer: Manages hubs (D1, D2) that coordinate resource allocation
-- Core Layer: Houses primary routers (C1, C2) for network control and management
+* Edge Layer: Contains individual compute nodes (E1, E2, E3) providing direct GPU resources
+* Distribution Layer: Manages hubs (D1, D2) that coordinate resource allocation
+* Core Layer: Houses primary routers (C1, C2) for network control and management
 
 This hierarchical structure enables efficient task distribution and load balancing across the network.
 
@@ -221,33 +222,35 @@ graph TB
     D1 & D2 --> C1 & C2
 ```
 
-## 2.5 Performance Optimization
+### 2.5 Performance Optimization
 
 The system employs a sophisticated performance model based on multiple factors:
 
 $$P_{total} = \sum_{i=1}^{n} (G_i \cdot E_i \cdot \frac{1}{1 + L_i/C_i})$$
 
 Where:
-- $G_i$ = Individual GPU performance
-- $E_i$ = Node efficiency factor
-- $L_i$ = Network latency
-- $C_i$ = Computation time
-- $n$ = Number of active nodes
+
+* $G\_i$ = Individual GPU performance
+* $E\_i$ = Node efficiency factor
+* $L\_i$ = Network latency
+* $C\_i$ = Computation time
+* $n$ = Number of active nodes
 
 Task allocation prioritization uses a weighted scoring system:
 
 $$Score = w_1R + w_2P + w_3S + w_4L$$
 
 Where:
-- $R$ = Node reputation score (0-1)
-- $P$ = Performance metric (TFLOPS)
-- $S$ = Stake amount
-- $L$ = Latency factor
-- $w_1,w_2,w_3,w_4$ = Weight coefficients
 
-# 3. Core Technical Components
+* $R$ = Node reputation score (0-1)
+* $P$ = Performance metric (TFLOPS)
+* $S$ = Stake amount
+* $L$ = Latency factor
+* $w\_1,w\_2,w\_3,w\_4$ = Weight coefficients
 
-## 3.1 Resource Management System
+## 3. Core Technical Components
+
+### 3.1 Resource Management System
 
 ```mermaid
 graph TB
@@ -264,16 +267,17 @@ graph TB
         H -->|Resources Free| B
     end
 ```
+
 The resource allocation flow diagram shows:
 
-- Task submission evaluation
-- Resource availability checking
-- Queue management for limited resources
-- Wait pool handling for resource scarcity
+* Task submission evaluation
+* Resource availability checking
+* Queue management for limited resources
+* Wait pool handling for resource scarcity
 
 The ResourceAllocator class implements sophisticated scoring algorithms for optimal resource distribution across the network.
 
-### Resource Allocation Algorithm
+#### Resource Allocation Algorithm
 
 ```typescript
 interface ResourceRequirements {
@@ -315,18 +319,18 @@ class ResourceAllocator {
 }
 ```
 
-## 3.2 TON Network Integration
+### 3.2 TON Network Integration
 
 The task distribution system is implemented in Open Network for:
 
-- Efficient message creation and routing
-- Cross-chain communication protocols
-- Distributed storage management with redundancy
-- Secure data handling with encryption
+* Efficient message creation and routing
+* Cross-chain communication protocols
+* Distributed storage management with redundancy
+* Secure data handling with encryption
 
 The CrossChainBridge contract enables seamless interaction between different blockchain networks while maintaining security and consistency.
 
-### Task Distribution System
+#### Task Distribution System
 
 ```typescript
 interface TONTaskDistribution {
@@ -350,7 +354,7 @@ interface TONTaskDistribution {
 }
 ```
 
-### Cross-Chain Message Protocol
+#### Cross-Chain Message Protocol
 
 ```solidity
 contract CrossChainBridge {
@@ -381,7 +385,7 @@ contract CrossChainBridge {
 }
 ```
 
-### TON Storage Implementation
+#### TON Storage Implementation
 
 ```typescript
 class TONStorageManager {
@@ -410,18 +414,19 @@ class TONStorageManager {
 }
 ```
 
-## 3.3 Proof of Computation System
+### 3.3 Proof of Computation System
 
-### Mathematical Model
+#### Mathematical Model
 
 The Proof of Computation (PoC) system uses a zero-knowledge proof construction:
 
 $$\pi = Proof\{(x, w): C(x, w) = 1\}$$
 
 Where:
-- $x$ is the public input (task specification)
-- $w$ is the witness (computation results)
-- $C$ is the verification circuit
+
+* $x$ is the public input (task specification)
+* $w$ is the witness (computation results)
+* $C$ is the verification circuit
 
 The verification equation:
 
@@ -429,10 +434,10 @@ $$e(g^{\alpha}, h^{\beta}) \cdot e(g^x, h^w) = e(g^{\pi}, h)$$
 
 The ProofOfComputation class implements this with:
 
-- Circuit building for specific tasks
-- Witness preparation from results
-- Zero-knowledge proof generation
-- Local verification before submission
+* Circuit building for specific tasks
+* Witness preparation from results
+* Zero-knowledge proof generation
+* Local verification before submission
 
 Implementation in code:
 
@@ -461,16 +466,15 @@ class ProofOfComputation {
 }
 ```
 
-# 4. Security Architecture
+## 4. Security Architecture
 
 Neurolov's security architecture implements a comprehensive approach that safeguards every aspect of the platform's operations. At its core, the system utilizes multiple interconnected security layers that work in harmony to protect both user data and computational resources. This architecture is designed not just for current threats, but also to be adaptable to emerging security challenges in the distributed computing landscape.
 
-The system employs advanced cryptographic protocols throughout its operations, ranging from basic data transmission to complex computational task verification. What makes this architecture particularly robust is its ability to maintain high security standards without significantly impacting system performance or user accessibility. Each security measure is carefully balanced against its computational overhead to ensure optimal platform 
+The system employs advanced cryptographic protocols throughout its operations, ranging from basic data transmission to complex computational task verification. What makes this architecture particularly robust is its ability to maintain high security standards without significantly impacting system performance or user accessibility. Each security measure is carefully balanced against its computational overhead to ensure optimal platform
 
-## 4.1 Multi-Layer Security Model
+### 4.1 Multi-Layer Security Model
 
-The heart of Neurolov's security infrastructure lies in its multi-layer security model. At the topmost level, network security serves as the primary defense mechanism, controlling access to the infrastructure and managing network-level protocols. This layer acts as the first line of defense against external threats while ensuring smooth communication between different parts of the system.
-Building upon this foundation, the node validation layer leverages zero-knowledge proofs to verify the authenticity and capabilities of participating nodes. This layer maintains a sophisticated reputation system that tracks node reliability and performance over time, ensuring that only trustworthy nodes participate in sensitive computations.
+The heart of Neurolov's security infrastructure lies in its multi-layer security model. At the topmost level, network security serves as the primary defense mechanism, controlling access to the infrastructure and managing network-level protocols. This layer acts as the first line of defense against external threats while ensuring smooth communication between different parts of the system. Building upon this foundation, the node validation layer leverages zero-knowledge proofs to verify the authenticity and capabilities of participating nodes. This layer maintains a sophisticated reputation system that tracks node reliability and performance over time, ensuring that only trustworthy nodes participate in sensitive computations.
 
 Data protection forms another crucial layer of the security model, implementing end-to-end encryption for all data transfers within the network. This layer utilizes secure enclaves for particularly sensitive computations, ensuring that data privacy is maintained even during processing. The implementation of these secure enclaves is particularly noteworthy as it allows for confidential computing without compromising on performance.
 
@@ -496,7 +500,7 @@ graph TB
     end
 ```
 
-### Node Validation Protocol
+#### Node Validation Protocol
 
 ```typescript
 class NodeValidator {
@@ -537,11 +541,11 @@ class NodeValidator {
 }
 ```
 
-## 4.2 Security Protocol Specifications
+### 4.2 Security Protocol Specifications
 
 The platform employs advanced encryption protocols designed specifically for distributed computing environments. The encryption system uses a sophisticated key derivation function based on PBKDF2 with SHA-256 hashing, utilizing 100,000 iterations for maximum security. For task data encryption, the system implements AES-GCM with ephemeral key pairs, ensuring perfect forward secrecy for all compute operations. A notable feature is the automatic key rotation mechanism that refreshes encryption keys based on both time intervals and data volume thresholds.
 
-### Encryption Protocol
+#### Encryption Protocol
 
 ```typescript
 interface EncryptionProtocol {
@@ -587,28 +591,32 @@ interface EncryptionProtocol {
 }
 ```
 
-# 5. Performance Metrics & Benchmarking
+## 5. Performance Metrics & Benchmarking
 
-## 5.1 System Performance Model
+### 5.1 System Performance Model
 
 The system's overall performance is modeled using the following equations:
 
-### Network Performance
+#### Network Performance
+
 $$T_{network} = \sum_{i=1}^{n} \frac{D_i}{B_i} + L_i$$
 
 Where:
-- $D_i$ = Data size for node i
-- $B_i$ = Available bandwidth
-- $L_i$ = Network latency
 
-### Computation Efficiency
+* $D\_i$ = Data size for node i
+* $B\_i$ = Available bandwidth
+* $L\_i$ = Network latency
+
+#### Computation Efficiency
+
 $$E_{compute} = \frac{\sum_{i=1}^{n} C_i \cdot U_i}{\sum_{i=1}^{n} C_i}$$
 
 Where:
-- $C_i$ = Compute capacity of node i
-- $U_i$ = Utilization factor
 
-## 5.2 Benchmark Implementation
+* $C\_i$ = Compute capacity of node i
+* $U\_i$ = Utilization factor
+
+### 5.2 Benchmark Implementation
 
 The benchmarking system provides comprehensive performance testing across three critical areas. First, it evaluates computation performance through rigorous testing with varying data sizes and parallel processing capabilities. Network performance testing examines different packet sizes and protocols across the active node network. Storage performance testing focuses on read/write operations with various data sizes and redundancy levels. The system automatically aggregates these metrics to provide detailed performance insights and optimization recommendations.
 
@@ -647,11 +655,11 @@ class PerformanceBenchmark {
 }
 ```
 
-# 6. Integration Framework
+## 6. Integration Framework
 
 The integration framework represents Neurolov's approach to seamlessly connecting various system components. This framework provides standardized interfaces for connecting external systems, handling data flow between different parts of the platform, and managing cross-chain interactions. The architecture emphasizes modularity and flexibility, allowing for easy addition of new features and integration with external services.
 
-## 6.1 Telegram WebApp Integration
+### 6.1 Telegram WebApp Integration
 
 The Telegram integration layer provides a seamless connection between the Neurolov platform and Telegram's ecosystem. This integration is structured in two main layers: the Telegram Layer, which handles direct user interactions and API communications, and the Neurolov Layer, which manages resource allocation and compute operations. The bridge between these layers ensures secure and efficient data transfer while maintaining the user-friendly nature of Telegram's interface.
 
@@ -672,7 +680,7 @@ graph TB
     G --> C
 ```
 
-### WebApp Implementation
+#### WebApp Implementation
 
 ```typescript
 class TelegramIntegration {
@@ -719,11 +727,11 @@ class TelegramIntegration {
 }
 ```
 
-## 6.2 Payment System Integration
+### 6.2 Payment System Integration
 
 The payment system integration features a sophisticated payment channel implementation that supports both immediate and scheduled transactions. This system handles multiple payment scenarios, from simple compute resource payments to complex cross-chain transactions. Payment channels are designed with automatic dispute resolution mechanisms and support for partial payments, making them ideal for continuous compute resource usage scenarios.
 
-### TON Payments Protocol
+#### TON Payments Protocol
 
 ```solidity
 contract PaymentProcessor {
@@ -793,7 +801,7 @@ contract PaymentProcessor {
 }
 ```
 
-## 6.3 Cross-Chain State Management
+### 6.3 Cross-Chain State Management
 
 The cross-chain state management system ensures consistent state synchronization across different blockchain networks. It implements a merkle-proof based verification system for state updates, ensuring that state transitions are verifiable and secure. The system includes automatic conflict resolution mechanisms and handles state rollbacks when necessary. This component is crucial for maintaining consistency across the platform's multi-chain architecture while ensuring transaction finality and state validity.
 
@@ -830,9 +838,9 @@ interface StateManager {
 }
 ```
 
-# 7. Technical Implementation Details
+## 7. Technical Implementation Details
 
-## 7.1 Node Registration Pipeline
+### 7.1 Node Registration Pipeline
 
 ```mermaid
 sequenceDiagram
@@ -854,9 +862,10 @@ sequenceDiagram
     Blockchain-->>Node Registry: Confirmation
     Node Registry-->>User: Registration Complete
 ```
+
 The sequence diagram outlines the secure node onboarding process, starting with user initiation through browser capability detection. The Node Registry validates capabilities through the Validator service, which runs benchmarks and generates proofs. Final registration is recorded on-chain with
 
-## 7.2 Task Execution Pipeline
+### 7.2 Task Execution Pipeline
 
 The TaskExecutionPipeline implements parallel computation management. It partitions incoming tasks into optimally-sized subtasks, distributes them across available nodes, validates results using the proof of computation protocol, and handles reward distribution. The system includes comprehensive error handling and performance metrics collection
 
@@ -915,15 +924,14 @@ class TaskExecutionPipeline {
 }
 ```
 
+## 8. Future Technical Development
 
-# 8. Future Technical Development
-
-## 8.1 Scaling Architecture
-
+### 8.1 Scaling Architecture
 
 The NetworkExpansion interface defines the staged growth of Neurolov's compute network. The primary region targets 5000 nodes delivering 250,000 TFLOPS with specific geographical distribution across Asia (35%), Europe (30%), Americas (25%), and other regions (10%). The secondary expansion phase aims for 15,000 nodes with 750,000 TFLOPS global coverage.
 
-### Multi-Region Network Expansion
+#### Multi-Region Network Expansion
+
 ```typescript
 interface NetworkExpansion {
   regions: {
@@ -947,9 +955,11 @@ interface NetworkExpansion {
   }
 }
 ```
+
 The three-layer diagram shows the interaction between Solana Layer-1 for core settlement and two Layer-2 networks: Compute L2 for task coordination and Data L2 for storage. This enables efficient task distribution while maintaining security through the base layer.
 
-### Layer-2 Optimization Strategy
+#### Layer-2 Optimization Strategy
+
 ```mermaid
 graph TB
     subgraph Layer 1 - Solana
@@ -975,12 +985,12 @@ graph TB
     C --> F & I
 ```
 
-## 8.2 Advanced AI Integration
-
+### 8.2 Advanced AI Integration
 
 The AIModelFramework interface outlines distributed training capabilities including Parameter Server and Ring AllReduce strategies. It specifies hardware requirements (8GB GPU memory minimum, CUDA 8.0+) and deployment features like real-time inference and automated scaling
 
-### AI Model Training Framework
+#### AI Model Training Framework
+
 ```typescript
 interface AIModelFramework {
   training: {
@@ -1013,9 +1023,10 @@ interface AIModelFramework {
 }
 ```
 
-## 8.3 Technical Research Initiatives
+### 8.3 Technical Research Initiatives
 
-### AGI Research Pipeline
+#### AGI Research Pipeline
+
 ```typescript
 interface AGIResearch {
   focus: {
@@ -1050,11 +1061,12 @@ interface AGIResearch {
 }
 ```
 
-## 8.4 Protocol Upgrade Pathway
+### 8.4 Protocol Upgrade Pathway
 
 The upgrade pathway mermaid diagram shows the platform's technical evolution across three versions. V1.0 represents the current WebGPU implementation, V2.0 introduces quantum-ready capabilities, and V3.0 establishes AGI integration architecture.
 
-### Version 2.0 Specification
+#### Version 2.0 Specification
+
 ```mermaid
 graph TB
     subgraph Current - v1.0
@@ -1080,7 +1092,8 @@ graph TB
     C --> F --> I
 ```
 
-### Technical Specifications for v2.0
+#### Technical Specifications for v2.0
+
 ```typescript
 interface ProtocolV2 {
   compute: {
@@ -1110,11 +1123,12 @@ interface ProtocolV2 {
 }
 ```
 
-## 8.5 Network Evolution Plan
+### 8.5 Network Evolution Plan
 
 The ScalingPlan interface defines three development phases through 2025, with specific node counts and performance targets. Each phase includes feature deployments like Enhanced WebGPU (Phase 1), Cross-chain Bridge (Phase 2), and Quantum Readiness (Phase 3).
 
-### Infrastructure Scaling Phases
+#### Infrastructure Scaling Phases
+
 ```typescript
 interface ScalingPlan {
   phase1_2024Q4: {
@@ -1147,12 +1161,12 @@ interface ScalingPlan {
 }
 ```
 
-## 9. Technical Specifications for Future Features
-
+### 9. Technical Specifications for Future Features
 
 The NeuralEngine interface describes a hybrid neural-symbolic architecture with multi-modal input processing, causal inference, and action generation layers. It supports distributed deployment with N+2 redundancy and automatic failover mechanisms.
 
-### Neural Processing Engine
+#### Neural Processing Engine
+
 ```typescript
 interface NeuralEngine {
   architecture: {
@@ -1176,19 +1190,20 @@ interface NeuralEngine {
 }
 ```
 
-## 10. Conclusion
+### 10. Conclusion
 
 The technical evolution of Neurolov is focused on creating a resilient, scalable, and future-proof infrastructure for decentralized computing. Through systematic implementation of advanced features, robust security measures, and forward-looking architecture decisions, we aim to establish a foundation for the next generation of distributed computing and artificial intelligence applications.
 
 For detailed implementation specifics, API documentation, and development guidelines, please refer to our technical documentation at docs.neurolov.com.
 
-*Note: Technical specifications and timelines are subject to updates based on technological advancements and community feedback.*
+_Note: Technical specifications and timelines are subject to updates based on technological advancements and community feedback._
 
-# Technical Appendices
+## Technical Appendices
 
-## Appendix A: WebGPU Implementation Specifications
+### Appendix A: WebGPU Implementation Specifications
 
-### A.1 GPU Core Requirements
+#### A.1 GPU Core Requirements
+
 Detailed specifications for GPU requirements and pipeline configurations, including shader compilation optimization and buffer management strategies.
 
 ```typescript
@@ -1210,7 +1225,7 @@ interface GPURequirements {
 }
 ```
 
-### A.2 WebGPU Pipeline Configuration
+#### A.2 WebGPU Pipeline Configuration
 
 ```typescript
 interface PipelineConfig {
@@ -1232,10 +1247,11 @@ interface PipelineConfig {
 }
 ```
 
-## Appendix B: Network Protocol Specifications
+### Appendix B: Network Protocol Specifications
+
 Node discovery and communication protocols using DHT-based methods with Protocol Buffer messaging and Kademlia routing.
 
-### B.1 Node Communication Protocol
+#### B.1 Node Communication Protocol
 
 ```typescript
 interface NodeProtocol {
@@ -1258,7 +1274,7 @@ interface NodeProtocol {
 }
 ```
 
-### B.2 Data Flow Specifications
+#### B.2 Data Flow Specifications
 
 ```mermaid
 sequenceDiagram
@@ -1275,10 +1291,11 @@ sequenceDiagram
     Edge Node-->>Client: Receipt
 ```
 
-## Appendix C: Security Implementation Guide
+### Appendix C: Security Implementation Guide
+
 Comprehensive encryption standards for asymmetric (Ed25519) and symmetric (AES-GCM) encryption with secure channel establishment procedures.
 
-### C.1 Encryption Standards
+#### C.1 Encryption Standards
 
 ```typescript
 interface EncryptionStandards {
@@ -1299,7 +1316,7 @@ interface EncryptionStandards {
 }
 ```
 
-### C.2 Security Protocol Implementation
+#### C.2 Security Protocol Implementation
 
 ```typescript
 class SecurityProtocol {
@@ -1326,10 +1343,11 @@ class SecurityProtocol {
 }
 ```
 
-## Appendix D: Performance Optimization Guide
+### Appendix D: Performance Optimization Guide
+
 Task optimization parameters for compute, network, and storage operations with specific monitoring metrics and thresholds.
 
-### D.1 Task Optimization Parameters
+#### D.1 Task Optimization Parameters
 
 ```typescript
 interface OptimizationParams {
@@ -1353,7 +1371,7 @@ interface OptimizationParams {
 }
 ```
 
-### D.2 Performance Monitoring Points
+#### D.2 Performance Monitoring Points
 
 ```typescript
 interface MonitoringPoints {
@@ -1386,10 +1404,11 @@ interface MonitoringPoints {
 }
 ```
 
-## Appendix E: API Reference
+### Appendix E: API Reference
+
 Core API endpoint specifications for compute task management, node operations, and marketplace interactions.
 
-### E.1 Core API Endpoints
+#### E.1 Core API Endpoints
 
 ```typescript
 interface APIEndpoints {
@@ -1423,7 +1442,7 @@ interface APIEndpoints {
 }
 ```
 
-### E.2 WebSocket Events
+#### E.2 WebSocket Events
 
 ```typescript
 interface WebSocketEvents {
@@ -1447,11 +1466,11 @@ interface WebSocketEvents {
 }
 ```
 
-## Appendix F: Development Tools & SDKs
+### Appendix F: Development Tools & SDKs
 
 SDK components and development environment setup requirements including Node.js, Rust, and Solana CLI configurations.
 
-### F.1 SDK Components
+#### F.1 SDK Components
 
 ```typescript
 interface SDKComponents {
@@ -1473,7 +1492,7 @@ interface SDKComponents {
 }
 ```
 
-### F.2 Development Environment Setup
+#### F.2 Development Environment Setup
 
 ```bash
 # Required dependencies
@@ -1496,10 +1515,11 @@ neurolov test suite
 neurolov deploy --network mainnet
 ```
 
-## Appendix G: Upgrade & Migration Procedures
+### Appendix G: Upgrade & Migration Procedures
+
 Detailed protocols for node upgrades and smart contract migrations with rollback capabilities.
 
-### G.1 Node Upgrade Protocol
+#### G.1 Node Upgrade Protocol
 
 ```typescript
 interface UpgradeProtocol {
@@ -1528,7 +1548,7 @@ interface UpgradeProtocol {
 }
 ```
 
-### G.2 Smart Contract Migration
+#### G.2 Smart Contract Migration
 
 ```solidity
 interface MigrationProcedure {
@@ -1545,4 +1565,4 @@ interface MigrationProcedure {
 }
 ```
 
-*End of Technical Appendices*
+_End of Technical Appendices_
