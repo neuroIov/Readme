@@ -1,4 +1,5 @@
 # Table of contents
 
-* [Doc](README.md)
+* [Introduction](README.md)
 * [Technical Paper](<Technical Paper.md>)
+* [Getting Started](getting-started.md)
