@@ -245,9 +245,8 @@ interface MonitoringMetrics {
    - Verify signature validation
 
 ### 7.2 Support Contacts
-- Technical Support: support@neurolov.com
-- Emergency Hotline: +1-XXX-XXX-XXXX
-- Security Team: security@neurolov.com
+- Technical Support: support@neurolov.ai
+
 
 ---
 
