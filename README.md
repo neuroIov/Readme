@@ -4,7 +4,7 @@
 
 Neurolov is a simple computing ecosystem that revolutionizes access to GPU/CPU resources and AI capabilities through browser-based technology. By  integrating WebGPU, blockchain technology, and advanced resource allocation algorithms, we enable anyone to participate in and benefit from distributed & decentralized computing.
 
-### &#x20;Current Statistics
+### &#x20;Current Statistic
 
 * Active GPU Nodes: 200
 * Total Computing Power: 85,000 TFLOPS
