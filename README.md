@@ -2,7 +2,10 @@
 
 ## 1.1 What is Neurolov
 
-Neurolov is a simple computing ecosystem that revolutionizes access to GPU/CPU resources and AI capabilities through browser-based technology. By  integrating WebGPU, blockchain technology, and advanced resource allocation algorithms, we enable anyone to participate in and benefit from distributed & decentralized computing.
+Neurolov is a decentralized, browser-powered GPU compute ecosystem that empowers users to either earn rewards by contributing idle device power or create with AI using powerful, affordable GPU resources—no software installation needed.Built on WebGPU + Solana, Neurolov transforms any modern device into an income-generating or AI-powered workstation.We’re building the world's first fully browser-based GPU rental marketplace integrated with an AI model hub, staking system, and gamified compute network.
+
+\
+
 
 ### &#x20;Current Statistic
 
@@ -14,11 +17,12 @@ Neurolov is a simple computing ecosystem that revolutionizes access to GPU/CPU r
 
 ### &#x20;Core Platform Features
 
-1. Browser-based GPU resource sharing via WebGPU
-2. AI model marketplace with pre-trained models
-3. Seamless Telegram micro-app integration
+1. Browser-based compute via WebGPU & WebGL2 fallback
+2. AI model marketplace (live models like Neuro Image Gen & Freedom AI)
+3. Neuro Swarm (Connect-to-Earn): Plug in your device and earn $NLOV
 4. Multi-chain architecture (Solana + TON)
 5. Advanced proof of computation system
+6. Gamification: Power Hours, Leaderboards, Streaks, NFT rewards
 
 ## 1.2 Vision & Mission
 
