@@ -2,21 +2,21 @@
 
 ## 2.1 Platform Overview
 
+Neurolov is designed to work entirely inside your browser, requiring no software installation. It combines compute contribution, AI model usage, and earnings in one seamless interface.
+
 ### Platform Components
 
 1. Client Layer
-   * Web Interface
-   * Telegram Client
+   * Web Dashboard (https://app.neurolov.ai)
    * Mobile Responsive Design
 2. Compute Layer
    * GPU Pool Management
-   * Task Scheduler
+   * Smart Task Scheduler (stake-weighted + priority-based)
    * Resource Manager
-   * Result Validator
+   * Verification System (Proof of Computation)Result
 3. Blockchain Layer
-   * Solana Smart Contracts
-   * TON Integration
-   * Token System
+   * Solana Smart Contracts (Rust-based SPL)
+   * Real-time Token Reward System ($NLOV)
 
 ## 2.2 Creating an Account
 
@@ -26,7 +26,6 @@
 2. Choose registration method:
    * Email signup
    * Social login (Google, GitHub)
-   * Telegram authentication
 
 ### Account Verification
 
@@ -79,19 +78,19 @@
 
 1. Main Overview
    * Active tasks
-   * Earnings display
-   * Resource utilization
+   * Estimated $NLOV earnings
+   * GPU usage & health
    * Network status
 2. Quick Actions
    * Start/Stop computing
-   * Access marketplace
-   * Deploy models
-   * View analytics
+   * Access AI marketplace
+   * Stake tokens or claim rewards
+   * Monitor referrals and credits
 3. Performance Metrics
-   * GPU utilization
-   * Earnings rate
-   * Network contribution
-   * Task completion rate
+   * Performance graph (daily/weekly)
+   * Task success rate
+   * Device-level earnings
+   * Leaderboard placement (if eligible)
 
 ## 2.6 Security Best Practices
 

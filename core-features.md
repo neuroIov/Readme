@@ -1,58 +1,59 @@
 # 3. Core Features
 
-## 3.1 Connect to Earn&#x20;
+## 3.1 Neuro Swarm (Connect-to-Earn)&#x20;
 
 ### How it Works
 
-Neurolov's Connect to Earn feature enables users to share their GPU resources through their browser using WebGPU technology. This innovative approach allows for:
+Neuro Swarm is Neurolov’s decentralized compute-sharing network where users can contribute idle GPU or CPU power directly from their browser and earn $NLOV tokens in return.
 
-* Direct GPU access through modern browsers
-* Zero installation requirements
-* Real-time resource sharing
-* Automated reward distribution
+\
+There’s no software installation required—just connect your device, start contributing, and earn passively.\
+How It Works:
+
+Log in to app.neurolov.ai
+
+Run the automatic compatibility and GPU validation check
+
+Start contributing to AI and compute tasks in real-time
+
+Earn 100–150 NLOV per day per device
+
+Boost earnings via:
+
+Power Hours (2x reward slots)
+
+Leaderboard rankings
+
+Streak bonuses (7-day consistency = extra NLOV)
 
 ### Browser Compatibility Check
 
 The platform automatically performs these compatibility checks:
 
-1. WebGPU Support
-   * Browser version verification
-   * GPU driver compatibility
-   * Hardware capabilities assessment
-2. Performance Validation
-   * GPU compute capability
-   * Memory availability
-   * Network stability
-   * Connection speed
+* Supports WebGPU (Chrome, Edge, Firefox)
+* Falls back to WebGL2 for legacy devices
+* Tests GPU VRAM, compute power, and browser settings
+* Ensures network stability and upload/download speed
+* Adaptive power mode for mobile & low-resource devices
 
 ### Resource Sharing Settings
 
-Users can customize their resource contribution:
+Users can customize their resource contribution:\
 
-1. Performance Settings
-   * GPU usage limit (%)
-   * Memory allocation
-   * Workload preferences
-   * Schedule configuration
-2. Optimization Options
-   * Power usage settings
-   * Thermal management
-   * Network bandwidth limits
-   * Priority settings
+
+* Set GPU usage limits (e.g., 50% or 100%)
+* Enable power-saving or turbo mode
+* Configure session duration or time windows
+* Set thermal safety limits (auto-pause if hot)
+* Manage bandwidth usage during contribution
 
 ### Earnings Tracking
 
-Real-time monitoring of:
-
-1. Current Earnings
-   * Hourly rate
-   * Daily accumulation
-   * Performance bonuses
-2. Historical Data
-   * Earnings history
-   * Performance metrics
-   * Contribution statistics
-   * Reward calculations
+* Live $NLOV earnings per hour and per task
+* Bonus logs (Power Hours, streaks, referrals)
+* Task complexity + device power-based reward model
+* Daily rewards auto-claimed to your Solana wallet
+* Earnings history and contribution stats over time
 
 ## 3.2 GPU Marketplace
 
@@ -114,61 +115,47 @@ For GPU renters:
 
 ## 3.3 AI Model Marketplace
 
-### Available Models
+Neurolov also functions as a hub for pre-trained and deployable AI models that can be used via browser or integrated via API.
 
-Pre-deployed AI models:
+### Live Models (April 2025):
 
-1. NeuroGPT
-   * Architecture: 12-layer, 768-hidden, 12-heads
-   * Parameters: 110M
-   * Use cases: Sentiment analysis, NER, QA
-2. NeuroVision
-   * Architecture: EfficientNet-B4 backbone
-   * Features: FPN integration
-   * Use cases: Medical imaging, object detection
-3. NeuroAudio
-   * Architecture: GPT-3 based
-   * Parameters: 1.5B
-   * Use cases: Audio generation, music creation
+* Freedom AI: Censorship-free conversational chatbot
+* Neurolov Image Gen: Text-to-image generator with fast inference
 
-### Model Integration
+### Upcoming Models:
 
-1. Integration Methods
-   * API access
-   * SDK implementation
-   * Direct deployment
-   * Custom integration
-2. Framework Support
-   * TensorFlow
-   * PyTorch
-   * ONNX
-   * MLflow
+* Text-to-video (Q2)
+* 3D model generation
+* AI music & audio generation
+* Deepfake studio
+* Agentic AI deployment\
 
-### Usage Terms
 
-1. Licensing Options
-   * Commercial use
-   * Research use
-   * Trial period
-   * Custom licensing
-2. Resource Requirements
-   * Minimum GPU specs
-   * Memory requirements
-   * Network bandwidth
-   * Storage needs
+### Integration Options:
 
-### Performance Metrics
+* API access with token authentication
+* SDK packages (coming soon)
+* Browser-based deploy & usage
 
-1. Model Monitoring
-   * Inference speed
-   * Accuracy metrics
-   * Resource usage
-   * Cost analysis
-2. Optimization Tools
-   * Performance tuning
-   * Resource optimization
-   * Cost efficiency
-   * Scaling options
+### Framework Support:
+
+* TensorFlow, PyTorch
+* ONNX, MLflow
+* WebAI-compatible interfaces
+
+### Licensing & Use Terms:
+
+* Free-to-try credits
+* $NLOV-based pay-per-inference
+* Commercial licenses for teams
+* Special discounts for testnet users
+
+### Performance Metrics:
+
+* Inference time per device
+* Cost per model execution
+* Accuracy reporting (optional)
+* GPU/VRAM usage per model
 
 ### Deployment Options
 
