@@ -28,31 +28,41 @@ Neurolov is a decentralized, browser-powered GPU compute ecosystem that empowers
 
 ### Vision
 
-Our vision is to push the limits of artificial intelligence (AI) and spearhead the shift towards artificial general intelligence (AGI). We envision a future where AI agents are effortlessly incorporated into routine activities, boosting human potential and raising standards of living.
+To decentralize AI and supercharge the move toward community-powered AGI—where autonomous agents, artists, developers, and hobbyists co-create the future of intelligence without centralized control.
 
 ### Mission
 
-Our mission is to transform how cutting-edge AI technologies are used and integrated. We aim to:
+Neurolov exists to:
 
-* Provide developers and businesses with state-of-the-art resources
-* Build scalable, secure, and intelligent AI solutions
-* Increase efficiency, affordability, and accessibility of AI development
-* Foster innovation through the latest LLM and GPU technologies
+\
+1\. Democratize compute access through zero-barrier browser tools
 
-## 1.3 Market Opportunity
+\
+2\. Enable fair monetization for idle hardware and talent
 
-### Market Size
+\
+3.Empower innovation with scalable, real-time AI capabilities
 
-* Total Addressable Market (TAM):
-  * Global GPU Cloud Market: $388B
-  * AI Infrastructure Market: $160
-  * Decentralized Computing: $25B&#x20;
+\
+4.Foster open experimentation through sandboxed AI environments
+
+\
+5.Build a global compute economy governed by tokenized incentives
+
+### &#x20;Market Opportunity
+
+* Total Addressable Market (TAM)
+* GPU Cloud Market: $388B
+* AI Infrastructure: $160B
+*   Decentralized Compute: $25B+
+
+
 
 ### Serviceable Markets
 
-* GPU Cloud Services: $85B
-* AI Model Training: $30B
-* Edge Computing: $15B
+* AI Model Hosting & Inference: $50B
+* Edge Compute Rentals (via browser): $20B
+* Compute-as-a-Service for Developers: $15B
 
 ### Growth Drivers
 
@@ -82,13 +92,16 @@ Our mission is to transform how cutting-edge AI technologies are used and integr
 
 1. Democratized Access
    * Browser-based computing
-   * No installation required
-   * Pay-as-you-go model
+   * No installs, no config. Runs in your browser.
+   * Use any device (PC, mobile, tablet) with modern browser support.
 2. Technical Innovation
-   * WebGPU implementation
-   * Decentralized architecture
-   * Automated resource allocation
+   * WebGPU + fallback WebGL2 shaders
+   * Stake-weighted + urgency-based compute distribution
+   * Powered by Solana for blazing fast, low-cost settlement
+   * Real-time GPU task allocation
 3. Economic Benefits
-   * Reduced costs (70% lower than traditional providers)
-   * Fair reward distribution
-   * Multiple revenue streams
+   * Up to 100–150 $NLOV/day for contributors
+   * Bonus programs for referrals, streaks, multi-device contributions
+   *   Passive income through staking, node contribution, and governance
+
+       \
